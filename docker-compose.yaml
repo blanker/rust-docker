@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  cargo:
+    build: ./
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true
+    
+# docker-compose run --rm cargo init
