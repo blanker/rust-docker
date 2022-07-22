@@ -10,4 +10,11 @@ RUN sed -i 's|security.debian.org/debian-security|mirrors.ustc.edu.cn/debian-sec
 
 RUN apt-get update && apt-get install apt-utils -y && apt-get install lld clang -y
 
+COPY ./.cargo/config.toml /usr/local/cargo
+
+RUN rustup self update && rustup component add clippy && rustup component add rustfmt
+RUN cargo install cargo-tarpaulin 
+RUN cargo install cargo-audit
+# RUN cargo install cargo-watch 
+
 ENTRYPOINT [ "cargo" ]
